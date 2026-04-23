@@ -148,7 +148,7 @@ where $c_\tau = h \cdot \max(q-d, 0) + p \cdot \max(d-q, 0)$ and the expectation
 
 ### Phase 4 — Joint Loss Training
 
-$$\mathcal{L} = (1-\alpha) \cdot \text{MAPE} + \alpha \cdot \text{DRO\_Cost}$$
+$$\mathcal{L} = (1-\alpha) \cdot \text{MAPE} + \alpha \cdot \text{DROCost}$$
 
 Both terms normalized to 0–100% scale. $\alpha = 0.3$ normally, $\alpha = 0.4$ during disruption windows.
 
