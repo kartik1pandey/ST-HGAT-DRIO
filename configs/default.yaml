@@ -1,0 +1,53 @@
+datasets:
+  supply_graph:
+    nodes_csv: "archive/Raw Dataset/Nodes/Nodes.csv"
+    edge_csvs:
+      plant: "archive/Raw Dataset/Edges/Edges (Plant).csv"
+      product_group: "archive/Raw Dataset/Edges/Edges (Product Group).csv"
+      subgroup: "archive/Raw Dataset/Edges/Edges (Product Sub-Group).csv"
+      storage: "archive/Raw Dataset/Edges/Edges (Storage Location).csv"
+  dataco_csv: "archive (1)/DataCoSupplyChainDataset.csv"
+  benchmark_dir: "benchmark/"
+  m5_dir: "m5-forecasting-accuracy/"
+
+model:
+  d_hidden: 64
+  d_out: 64
+  horizon: 28          # match M5 evaluation horizon
+  seq_len: 14
+  seed: 42
+  num_heads: 4
+  dropout: 0.1
+
+training:
+  max_epochs: 50
+  batch_size: 256       # node-wise mini-batches
+  learning_rate: 3.0e-4
+  joint_alpha: 0.2      # base weight of DRO cost in joint loss
+  joint_alpha_disruption: 0.4  # alpha during factory shock windows
+  n_series: 500         # set to all 30490 on Linux/A100 by removing this line
+  shock_fraction: 0.1   # fraction of training windows with injected shocks
+  shock_scale: 3.0      # 3x demand surge during shock
+
+optimization:
+  solver: "gurobi"
+  epsilon: 0.1
+  gamma: 0.99
+  holding_cost: 1.0
+  stockout_penalty: 5.0
+  dynamic_epsilon: true
+
+disruption:
+  shock_duration: 4
+  shock_fraction: 0.5
+  shock_scale: 3.0
+  target_recovery_reduction_pct: 32.41
+
+sgp:
+  reservoir_dim: 256
+  K: 3                  # diffusion hops
+
+streaming:
+  backend: "flink"
+  buffer_seconds: 60
+  throughput_target: 1000

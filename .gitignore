@@ -1,0 +1,68 @@
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+wsl_venv/
+.venv/
+env/
+
+# ── Large datasets (too big for GitHub) ──────────────────────────────────────
+m5-forecasting-accuracy/
+archive/
+archive (1)/
+benchmark/
+
+# ── Model checkpoints (large binary files) ───────────────────────────────────
+checkpoints/
+lightning_logs/
+
+# ── Generated outputs (reproducible from code) ───────────────────────────────
+plots/
+*.log
+*.txt
+submission_run.log
+experiment_run.log
+checkpoint_output.txt
+final_output*.txt
+phase3*.log
+phase3*.txt
+submission_output.txt
+checkpoint_run.log
+final_phase.log
+
+# ── Scratch / debug scripts ───────────────────────────────────────────────────
+check_m5_meta.py
+check_wsl.py
+run_checkpoints.py
+run_full_experiments.py
+run_final_phase.py
+run_phase3.py
+run_phase3_revised.py
+PHASE2_SETUP.md
+EXPERIMENT_SUMMARY.md
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+dist/
+build/
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── OS / editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ── Kiro internal ─────────────────────────────────────────────────────────────
+.kiro/
+
+# ── Hypothesis database ───────────────────────────────────────────────────────
+.hypothesis/
